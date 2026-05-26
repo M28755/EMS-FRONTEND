@@ -396,7 +396,7 @@ async function handleCreateService() {
             closeModal('newService');
             loadServices();
             editingServiceId = null;
-            document.getElementById('service-modal-title').innerText = 'NEW SERVICE';
+            document.getElementById('ns_title_text').innerText = 'NEW SERVICE';
             document.getElementById('btn-create-service').innerHTML = '<i class="fas fa-plus"></i> Create Service';
             document.getElementById('ns_number').value = '';
             document.getElementById('ns_title').value = '';
