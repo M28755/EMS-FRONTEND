@@ -149,7 +149,7 @@ async function loadDashboard() {
             dashTable.innerHTML += `
             <tr>
                 <td><div style="display:flex;align-items:center;gap:8px;">
-                    <div class="proj-thumb">${p.image_url ? `<img src="${p.image_url}">` : '🏗️'}</div>
+                    <div class="proj-thumb">${p.image_url ? `<img src="${BACKEND_URL}${p.image_url}">` : '🏗️'}</div>
                     <div style="font-weight:600;font-size:13px;">${p.title}</div>
                 </div></td>
                 <td>${p.category}</td>
@@ -176,7 +176,7 @@ async function loadProjects() {
             tb.innerHTML += `
             <tr>
                 <td><div style="display:flex;align-items:center;gap:8px;">
-                    <div class="proj-thumb">${p.image_url ? `<img src="${p.image_url}">` : ''}</div>
+                    <div class="proj-thumb">${p.image_url ? `<img src="${BACKEND_URL}${p.image_url}">` : ''}</div>
                     <div style="font-weight:600;font-size:13px;">${p.title}</div>
                 </div></td>
                 <td>${p.category}</td>
@@ -202,7 +202,7 @@ async function loadTeam() {
             tb.innerHTML += `
             <tr>
              <td><div style="display:flex;align-items:center;gap:8px;">
-                    <div class="proj-thumb">${m.image_url ? `<img src="${m.image_url}">` : ''}</div>
+                    <div class="proj-thumb">${m.image_url ? `<img src="${BACKEND_URL}${m.image_url}">` : ''}</div>
                 </div></td>
                 <td><strong>${m.name}</strong></td>
                 <td>${m.position}</td>
@@ -238,7 +238,7 @@ async function openEditMember(id) {
         const img = document.querySelector('#tm-imagePreview img')
 
         if (m.image_url) {
-            img.src = m.image_url;
+            img.src = `${BACKEND_URL}${m.image_url}`;
             img.style.display = 'block';
         } else {
             img.style.display = 'none'
@@ -529,7 +529,7 @@ async function handleEditProject(id) {
 
         const img = document.querySelector('#imagePreview img');
         if (p.image_url) {
-            img.src = p.image_url;
+            img.src = `${BACKEND_URL} ${p.image_url}`;
             img.style.display = 'block';
         } else {
             img.style.display = 'none';

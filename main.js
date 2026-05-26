@@ -66,7 +66,7 @@ async function loadFeaturedProjects() {
                     <div class="projects-grid">
                         ${data.data.map(p => `
                             <div class="project-card">
-                                <img src="${p.image_url || 'Photos/default.jpg'}" alt="${p.title}">
+                                <img src="${BACKEND_URL}${p.image_url}" alt="${p.title}">
                                 <div class="project-info">
                                     <div class="project-location">
                                         <i class="fas fa-map-marker-alt"></i> ${p.location || 'Kenya'}
