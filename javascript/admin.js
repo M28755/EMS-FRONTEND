@@ -622,7 +622,7 @@ if (teamImageInput) {
 // ==========================================
 async function loadNotifications() {
     try {
-        const data = await api('/api/notifications')
+        const data = await api(`/api/notifications`)
         const badge = document.getElementById('notifBadge')
         const list = document.getElementById('notifList')
 

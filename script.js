@@ -1342,7 +1342,7 @@ if (footerChatForm) {
         };
 
         try {
-            const res = await fetch('/api/messages', {
+            const res = await fetch(`${BACKEND_URL}/api/messages`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
