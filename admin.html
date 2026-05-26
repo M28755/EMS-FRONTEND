@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="Photos/W-E-C-logo.jpeg">
+    <title>White Eagels Contracts | Admin Pannel</title>
+    <!--google font  link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bungee&family=Bungee+Spice&family=Climate+Crisis:YEAR@1979&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Gravitas+One&family=Poppins:ital,wght@0,100;0,200;0,30;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
+        rel="stylesheet">
+    <!--fontawesome icon link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <div id="toasts"></div>
+
+
+
+    <!--LOGIN OVERLAY-->
+    <div id="loginScreen">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="logo">
+                        <h3>WHITE EAGLES</h3>
+                        <h3 style="font-size: 1rem; margin-top: 4px;">CONTRACTORS</h3>
+                    </div>
+                    <div class="admin-badge">
+                        <i class="fas fa-shield-alt"></i> Admin Portal
+                    </div>
+                </div>
+
+                <div class="login-form">
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="loginUser" placeholder="Enter your email" autocomplete="off"
+                                required>
+                        </div>
+
+                        <div class="input-group">
+                            <label><i class="fas fa-lock"></i> Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="loginPass" placeholder="Enter your password" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword()">
+                                    <i class="fas fa-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <button type="submit" class="btn-login" id="loginBtn" onclick="handleLogin(event)">
+
+                                <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+                            </button>
+                        </div>
+
+                        <div id="loginError"></div>
+                    </form>
+                </div>
+
+                <div class="login-footer">
+                    <p>© 2024 White Eagles Contractors | <a href="#">Support</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--SIDEBAR-->
+    <aside class="sidebar" id="sidebar">
+        <div class="sb-logo">
+            <!-- <div class="sb-logo-mark">
+                <h3>WEC</h3>
+
+            </div> -->
+            <div class="sb-logo-text">
+                <h3>WHITE EAGELS CONTRACTORS</h3>
+                <p>ADMIN PORTAL</p>
+            </div>
+        </div>
+        <div class="sb-nav">
+            <div class="sb-section"> Overview</div>
+            <div class="sb-item active" onclick="nav('dashboard',this)">
+                <i class="fas fa-grid-2"></i>
+                <span class="sb-text">Dashboard</span>
+            </div>
+            <div class="sb-section">Operations</div>
+            <div class="sb-item" onclick="nav('projects',this)">
+                <i class="fas fa-hard-hat"></i>
+                <span class="sb-text">Projects</span>
+                <span class="sb-badge amber" id="proj-count-badge">0</span>
+            </div>
+            <div class="sb-item" onclick="nav('team',this)">
+                <i class="fas fa-users"></i>
+                <span>Team & Staff</span>
+            </div>
+            <div class="sb-item" onclick="nav('services',this)">
+                <i class="fas fa-wrench"></i>
+                <span>Services</span>
+            </div>
+            <div class="sb-item" onclick="nav('Messages', this)">
+                <i class="fas fa-envelope"></i>
+                <span>Messages</span>
+            </div>
+
+            <div class="sb-section">
+                <span>System</span>
+            </div>
+            <!-- <div class="sb-item" onclick="nav('settings',this)">
+                <i class="fas fa-gear">Setting</i>
+            </div>
+ -->
+        </div>
+        <div class="sb-bottom">
+            <div class="sb-user">
+                <div class="sb-avatar">AD</div>
+                <div>
+                    <div class="sb-uname">Admin User</div>
+                    <div class="sb-urole">Administrator</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="logOut">
+            <i class="fas fa-right-from-bracket"></i>
+            <span>Log Out</span>
+        </div>
+    </aside>
+    <!--MAIN-->
+    <div class="main">
+        <header class="topbar">
+            <div class="topBar-left">
+                <button class="ham-btn" id="hamBtn" onclick="toggleSidebar()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+
+                <div>
+                    <div class="page-title" id="pageTitle">Dashboard</div>
+                    <div class="breadcrumb">
+                        <span>WHITE EANGLE CONTRUCTION</span>
+                        <span class="sep">/</span>
+                        <span class="sep">Overview</span>
+                    </div>
+                </div>
+            </div>
+            <div class="topBar-right">
+                <div class="search-bar">
+                    <i class="fas fa-magnifying-glass" style="font-size:12px;"></i><input placeholder="Search..." />
+                </div>
+
+                <div class="notif-container topBar-btn ">
+                    <button class="notif-bell" onclick="toggleNotifPanel()">
+                        <i class="fas fa-bell"></i>
+                        <span class="notif-badge" id="notifBadge" style="display:none;">0</span>
+                    </button>
+
+                    <div class="notif-dropdown" id="notifDropdown" style="display:none;">
+                        <div class="notif-header">
+                            <h4>Notifications</h4>
+                            <button onclick="markAllRead()">Mark all read</button>
+                        </div>
+                        <ul id="notifList">
+                            <!-- Notifications will be injected here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <!--DASHBOARD-->
+            <div class="page-view active" id="v-dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fas fa-hard-hat"></i>
+                            </div>
+
+                            <div class="stat-change up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+3</span>
+                            </div>
+                        </div>
+                        <div class="stat-val" id="stat-proj-count"></div>
+                        <div class="stat-label stat-val">Active Projects</div>
+                        <div class="stat-bar">
+                            <div class="stat-bar-fill"></div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-con">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i>+8</div>
+                        </div>
+                        <div class="stat-val" id="stat-team-count">
+                            <span>Team Members</span>
+
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-bar-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-head">
+                            <span class="card-title">Recent Project</span>
+                            <span class="card-action" onclick="nav('projects',null)"> View All <i
+                                    class="fas fa-arrow-right"></i></span>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Project</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="dash-proj-table"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- <div class="card">
+                    <div class="card-head">
+                        <span class="card-title">Recent Activity</span>
+                    </div>
+                     <div class="card-body">
+                    <div class="activity-list">
+                        <div class="act-item">
+                             <div class="act-dot green">
+                                <i class="fas fa-check"></i>
+                             </div>
+                             <div>
+                                <div class="act-text"><strong>System Online</strong> — Backend connected
+                                            successfully</div>
+                                            <div class="act-time">Now</div>
+                             </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div> -->
+                </div>
+
+
+
+            </div>
+            <!--Projects-->
+            <div class="page-view" id="v-projects">
+                <div class="project-top">
+                    <div class="loading-text" id="proj-subtitle">Loading...</div>
+                    <button class="btn btn-amber" onclick="openModal('newProject')">
+                        <i class="fas fa-plus"></i> New Project
+                    </button>
+                </div>
+                <div class="card">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Category</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- TEAM -->
+            <div class="page-view" id="v-team">
+                <div class="project-top">
+                    <div class="loading-text" id="team-subtitle">Team Directory</div>
+                    <button class="btn btn-amber" onclick="openModal('teamMember')">
+                        <i class="fas fa-plus"></i> New Team Member
+                    </button>
+                </div>
+                <div class="card">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Profile</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Contact</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teamTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--SERVICE-->
+            <div class="page-view" id="v-services">
+                <div class="project-top">
+                    <div class="loading-text" id="service-subtitle">Services Directory</div>
+                    <button class="btn btn-amber" onclick="openModal('newService')">
+                        <i class="fas fa-plus"></i> New Service
+                    </button>
+
+                </div>
+                <div class="card">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="serviceTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Message  -->
+            <div class="page-view" id="v-Messages">
+                <div class="project-top">
+                    <div class="loading-text" id="msg-subtitle">Inbox</div>
+                </div>
+
+                <div class="card">
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Contact</th>
+                                    <th>Message</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="msgTableBody"></tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- SETTINGS -->
+            <!-- <div class="page-view" id="v-settings">
+                <div class="card">
+                    <div class="card-head">
+                        <span class="card-title">Company Profile (About Us Data)</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="fg">
+                            <label>Headline</label>
+                            <input type="text" id="set-headline" placeholder="About White Eagles Contractors">
+                        </div>
+                        <div class="fg">
+                            <label>Main Description</label>
+                            <textarea id="set-desc" rows="4" placeholder="We are a premier construction company..."></textarea>
+                        </div>
+                        <div class="fg">
+                            <label>Mission Statement</label>
+                            <textarea id="set-mission" rows="3"></textarea>
+                        </div>
+                        <div class="fg">
+                            <label>Vision Statement</label>
+                            <textarea id="set-vision" rows="3"></textarea>
+                        </div>
+                        <button class="btn btn-amber" onclick="handleSaveSettings()">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+ -->
+
+        </main>
+    </div>
+    <!--TEAM MEMBER MODEL-->
+    <div class="model-back" id="model-teamMember">
+        <div class="model">
+            <button class="btn-close model-x" id="closeTeamMember" aria-label="close" onclick="closeNewProjectModal()">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <div class="model-title">
+                <h3 id="modal-member-title">NEW TEAM MEMBER</h3>
+                <div class="line"></div>
+            </div>
+            <div class="form-grid">
+                <div class="input-card fg">
+                    <label>FULL NAME</label>
+                    <input type="text" id="tm_name" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="input-card fg">
+                    <label>POSITION</label>
+                    <input type="text" id="tm_position" placeholder="e.g. Site Engineer" required>
+                </div>
+                <div class="input-card fg" style="grid-column: 1 / -1;">
+                    <label>BIO</label>
+                    <textarea id="tm_bio" rows="3" placeholder="Short bio..."></textarea>
+                </div>
+                <div class="input-card fg">
+                    <label>EMAIL</label>
+                    <input type="email" id="tm_email" placeholder="name@company.com">
+                </div>
+                <div class="input-card fg">
+                    <label>PHONE</label>
+                    <input type="text" id="tm_phone" placeholder="+254 700 000 000">
+                </div>
+                <div class="input-card fg">
+                    <label>PROFILE IMAGE</label>
+                    <input type="file" id="tm_image" accept="image/*">
+                    <div class="image-preview" id="tm-imagePreview">
+                        <img src="" alt="Preview" style="display: none;">
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="model-footer">
+                <button class="btn btn-ghost" onclick="closeModal('teamMember')">Cancel</button>
+                <button class="btn btn-amber" id="btn-submit-member" onclick="handleSaveMember()">
+                    <i class="fas fa-check"></i> Save Member
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--MODEL NEW PROJECT-->
+    <div class="model-back" id="model-newProject">
+        <div class="model">
+            <!-- <div class="model-x" onclick="closeModel('newProject')">
+                <i class="fas fa-times"></i>
+            </div> -->
+            <button class="btn-close model-x" id="closeLogin" aria-label="close" onclick="closeNewProjectModal()">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <div class="model-title" id="modal-proj-title">
+                <h3>NEW PROJECT</h3>
+                <div class="line"></div>
+            </div>
+            <div class="form-grid">
+                <div class="input-card fg">
+                    <label>PROJECT TITLE</label>
+                    <input type="text" id="np_title" placeholder="Enter Project Title" required>
+                </div>
+                <div class="input-card fg">
+                    <label>CATEGORY</label>
+                    <select id="np-cat">
+                        <option value="Commercial">Commercial</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Industrial">Industrial</option>
+                        <option value="Infrastructure">Infrastructure</option>
+                        <option value="Renovation">Renovation</option>
+                    </select>
+                </div>
+                <div class="input-card fg">
+                    <label>LOCATION</label>
+                    <input type="text" id="np-location" placeholder="Enter Location" required>
+                </div>
+                <div class="input-card fg">
+                    <label>DESCRIPTION</label>
+                    <textarea id="np-desc" placeholder="Project details..." required></textarea>
+                </div>
+
+                <div class="input-card fg">
+                    <label>PROJECT IMAGE</label>
+                    <input type="file" id="np_image" accept="image/*" required>
+                    <div class="image-preview" id="imagePreview">
+                        <img src="" alt="Preview" style="display: none;" id="projimg">
+                    </div>
+                </div>
+
+                <div class="check-box">
+                    <input type="checkbox" id="np-featured">
+                    <label for="np-featured">Mark as Featured Project</label>
+
+                </div>
+                <div class="model-footer">
+                    <button class="btn btn-ghost" onclick="closeModal('newProject')">
+                        <i class="fas fa-times"></i> Cancel</button>
+                    <button class="btn btn-amber" id="create-new-project-btn" type="submit"
+                        onclick="handleCreateProject()">
+                        <i class="fas fa-plus"></i> Create Project</button>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <!--NEW SERVICE MODEL -->
+    <div class="model-back" id="model-newService">
+        <div class="model">
+            <button class="btn-close model-x" id="closeLogin" aria-label="close" onclick="closeNewProjectModal()">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <div class="model-title">
+                <h3 id="ns_title_text">NEW SERVISE</h3>
+                <div class="line"></div>
+            </div>
+            <div class="form-grid">
+                <div class="form-grid fg">
+                    <label>SERVICE NUMBER</label>
+                    <input type="number" id="ns_number" placeholder="e.g., 7" required>
+                </div>
+                <div class="form-grid fg">
+                    <label>TITLE</label>
+                    <input type="text" id="ns_title" placeholder="e.g., Residential Building" required>
+                </div>
+                <!-- <div class="form-grid fg">
+                    <label>ICON CLASS</label>
+                    <input type="text" id="ns_icon" placeholder="e.g., fa-solid fa-building" required>
+                </div> -->
+                <div class="form-grid fg">
+                    <label>DESCRIPTION</label>
+                    <textarea id="ns_desc" placeholder="Project details..." required></textarea>
+                </div>
+
+                <div class="model-footer">
+                    <button class="btn btn-ghost" onclick="closeModal('newService')">
+                        <i class="fas fa-times"></i> Cancel</button>
+                    <button class="btn btn-amber" id="btn-create-service" type="submit" onclick="handleCreateService()">
+                        <i class="fas fa-plus"></i> Create Service</button>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="javascript/admin.js"></script>
+
+</html>

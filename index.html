@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpeg" href="Photos/W-E-C-logo.jpeg">
+
+
+  <title>White Eagles Contractors</title>
+  <!--stylesheet link-->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="model.css" />
+  <link rel="stylesheet" href="main.css" />
+  <!--google font  link-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bungee&family=Bungee+Spice&family=Climate+Crisis:YEAR@1979&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Gravitas+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
+    rel="stylesheet" />
+  <!--fontawesome icon link-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+  <header>
+    <!--navigation -->
+    <div class="navigation-container">
+      <nav class="navbar">
+        <!-- LOGO -->
+        <div class="logo">
+          <img src="Photos/W-E-C-logo.jpeg" alt="white Eagles construction" width="50px" height="50px">
+          <h1>
+            White Eagles <br />
+            <span>Contractors</span>
+          </h1>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <div class="link-container">
+          <ul>
+            <li>
+              <a href="#"><i class="fa-solid fa-home"></i>HOME</a>
+            </li>
+            <li>
+              <a href="#about"><i class="fa-solid fa-user"></i>ABOUT</a>
+            </li>
+            <li>
+              <a href="#projects"><i class="fa-solid fa-folder"></i>PROJECTS</a>
+            </li>
+            <li>
+              <a href="#services"><i class="fa-solid fa-wrench"></i>SERVICES</a>
+            </li>
+            <li>
+              <a href="#contact"><i class="fa-solid fa-envelope"></i>CONTACT</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Desktop Auth Buttons -->
+        <div class="nav-auth" id="navAuth">
+          <!-- LOGGED IN VIEW -->
+          <div class="authUserInfo" style="display: none; align-items: center; gap: 15px;">
+            <a href="/admin.html" class="adminLink btn btn-outline"
+              style="display:none; border-color: #f97316; color: #f97316;">
+              <i class="fa-solid fa-lock"></i> <span>ADMIN</span>
+            </a>
+            <div class="user-greeting">
+              <i class="fa-solid fa-user-circle"></i>
+              <span class="userDisplayName">User</span>
+            </div>
+            <button class="btn btn-outline" onclick="logoutUser()" style="border-color: #ef4444; color: #ef4444;">
+              <i class="fa-solid fa-sign-out-alt"></i> LOGOUT
+            </button>
+          </div>
+
+          <!-- LOGGED OUT VIEW (Visible by default) -->
+          <a href="#" class="btn btn-outline openLogin">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> <span>LOGIN</span>
+          </a>
+          <a href="#" id="openReg" class="btn btn2-primary">
+            <i class="fa-solid fa-user-plus"></i> <span>REGISTER</span>
+          </a>
+        </div>
+
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger-menu" id="hamburgerMenu">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <ul>
+          <li>
+            <a href="#"><i class="fa-solid fa-home"></i>HOME</a>
+          </li>
+          <li>
+            <a href="#about"><i class="fa-solid fa-user"></i>ABOUT</a>
+          </li>
+          <li>
+            <a href="#projects"><i class="fa-solid fa-folder"></i>PROJECTS</a>
+          </li>
+          <li>
+            <a href="#services"><i class="fa-solid fa-wrench"></i>SERVICES</a>
+          </li>
+          <li>
+            <a href="#contact"><i class="fa-solid fa-envelope"></i>CONTACT</a>
+          </li>
+        </ul>
+        <!-- <div class="mobile-auth">
+          <div id="authUserInfo" style="display: none; align-items: center; gap: 15px;">
+          
+            <a href="/admin.html" class="btn btn-outline" id="adminLink"
+              style="display:none; border-color: #f97316; color: #f97316;">
+              <i class="fa-solid fa-lock"></i> <span>ADMIN</span>
+            </a>
+
+           
+            <div class="user-greeting">
+              <i class="fa-solid fa-user-circle"></i>
+              <span id="userDisplayName">User</span>
+            </div>
+
+           
+            <button class="btn btn-outline" onclick="logoutUser()" style="border-color: #ef4444; color: #ef4444;">
+              <i class="fa-solid fa-sign-out-alt"></i> LOGOUT
+            </button>
+          </div>
+          <a href="login.html" class="btn btn-outline openLogin" target="_top">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            <span>LOGIN</span>
+          </a>
+          <a href="registration.html" class="btn btn-primary" id="openReg" target="_top">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>REGISTER</span>
+          </a>
+
+
+        </div> -->
+        <div class="mobile-auth">
+          <!-- LOGGED IN VIEW -->
+          <div class="authUserInfo" style="display: none; flex-direction: column; gap: 10px; width: 100%;">
+            <a href="/admin.html" class="adminLink btn btn-outline"
+              style="display:none; border-color: #f97316; color: #f97316; justify-content: center;">
+              <i class="fa-solid fa-lock"></i> <span>ADMIN PANEL</span>
+            </a>
+            <div class="user-greeting" style="justify-content: center; width: 100%; padding: 10px 0;">
+              <i class="fa-solid fa-user-circle"></i>
+              <span class="userDisplayName">User</span>
+            </div>
+            <button class="btn btn-outline" onclick="logoutUser()"
+              style="border-color: #ef4444; color: #ef4444; width: 100%; justify-content: center;">
+              <i class="fa-solid fa-sign-out-alt"></i> LOGOUT
+            </button>
+          </div>
+
+          <!-- LOGGED OUT VIEW -->
+          <a href="#" class="btn btn-outline openLogin">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> <span>LOGIN</span>
+          </a>
+          <a href="#" id="openReg" class="btn btn-primary">
+            <i class="fa-solid fa-user-plus"></i> <span>REGISTER</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-bg image-slide">
+        <div class="slide active" style="background-image: url(&quot;Photos/image1.jpg&quot;)"></div>
+        <div class="slide" style="background-image: url(&quot;Photos/image2.jpg&quot;)"></div>
+        <div class="slide" style="background-image: url(&quot;Photos/image3.jpg&quot;)"></div>
+        <div class="slide" style="background-image: url(&quot;Photos/image4.jpg&quot;)"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span> Now Accepting
+          <span class="year-project">2026 </span>Projects
+        </div>
+        <h1>We Build<br />What <span>Matters</span></h1>
+        <p>
+          We are a professional construction company providing reliable,
+          high-quality building services from start to finish. We focus on
+          strong workmanship, clear communication, and timely project delivery
+          while keeping our clients’ needs and budgets in mind. By combining
+          skilled expertise, transparency, and attention to detail, we deliver
+          durable, well-finished projects you can trust—built right and built
+          to last.
+        </p>
+        <div class="hero-buttons">
+          <a href="#start-project">
+            <button class="btn-large">Start Your Project</button>
+          </a>
+          <a href="#projects">
+            <button class="btn-outline-lg">View Portfolio</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slider Navigation Dots -->
+      <div class="slider-dots">
+        <span class="dot-nav active" data-slide="0"></span>
+        <span class="dot-nav" data-slide="1"></span>
+        <span class="dot-nav" data-slide="2"></span>
+        <span class="dot-nav" data-slide="3"></span>
+      </div>
+
+      <!-- Optional: Previous/Next Buttons -->
+      <button class="slider-prev">❮</button>
+      <button class="slider-next">❯</button>
+    </section>
+    <!--services-->
+    <section class="services" id="services"></section>
+    <!--project-->
+    <section class="projects" id="projects"></section>
+    <!--about-->
+    <section class="about" id="about">
+      <!-- We are a professional construction company providing reliable, high-quality building services from start to finish. We focus on strong workmanship, clear communication, and timely project delivery while keeping our clients’ needs and budgets in mind. By combining skilled expertise, transparency, and attention to detail, we deliver durable, well-finished projects you can trust—built right and built to last. -->
+    </section>
+    <!--quotes-->
+
+    <section class="quotes" id="quotes">
+      <div class="container">
+        <div class="quotes-header">
+          <span class="quotes-label">Testimonials</span>
+          <h2 class="quotes-title">Words That Inspire Our Craft</h2>
+          <p class="quotes-subtitle">
+            Timeless perspectives on the art and impact of building.
+          </p>
+        </div>
+        <div class="quotes-carousel">
+          <div class="quotes-track">
+            <div class="quote-content active" data-index="0">
+              <blockquote>
+                <div class="quote-icon">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14 24H8C8 15.16 15.16 8 24 8V14C18.48 14 14 18.48 14 24ZM40 24H34C34 18.48 29.52 14 24 14V8C32.84 8 40 15.16 40 24Z"
+                      fill="currentColor" opacity="0.15" />
+                    <path
+                      d="M14 24C14 29.52 18.48 34 24 34V40C15.16 40 8 32.84 8 24H14ZM40 24C40 32.84 32.84 40 24 40V34C29.52 34 34 29.52 34 24H40Z"
+                      fill="currentColor" opacity="0.08" />
+                  </svg>
+                </div>
+
+                <p>
+                  We build what matters, from ground-breaking to grand opening
+                  with precision engineering and uncompromising quality.
+                </p>
+                <footer class="quote-footer">
+                  <div class="quote-author-line"></div>
+                  <h3>Confucius</h3>
+                  <span class="quote-role">Philosopher</span>
+                </footer>
+              </blockquote>
+            </div>
+            <div class="quote-content" data-index="1">
+              <blockquote>
+                <div class="quote-icon">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14 24H8C8 15.16 15.16 8 24 8V14C18.48 14 14 18.48 14 24ZM40 24H34C34 18.48 29.52 14 24 14V8C32.84 8 40 15.16 40 24Z"
+                      fill="currentColor" opacity="0.15" />
+                    <path
+                      d="M14 24C14 29.52 18.48 34 24 34V40C15.16 40 8 32.84 8 24H14ZM40 24C40 32.84 32.84 40 24 40V34C29.52 34 34 29.52 34 24H40Z"
+                      fill="currentColor" opacity="0.08" />
+                  </svg>
+                </div>
+                <p>
+                  A building is more than the sum of its parts. It’s the
+                  environment in which we live, work, worship, and connect.
+                  How we design, build, and maintain them impacts how we feel
+                  and perform in them. What we choose to build says a lot
+                  about who we are and what we value.
+                </p>
+                <footer class="quote-footer">
+                  <div class="quote-author-line"></div>
+                  <h3>Winston Churchill</h3>
+                  <span class="quote-role">Former Prime Minister of the United Kingdom</span>
+                </footer>
+              </blockquote>
+            </div>
+            <div class="quote-content" data-index="2">
+              <blockquote>
+                <div class="quote-icon">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14 24H8C8 15.16 15.16 8 24 8V14C18.48 14 14 18.48 14 24ZM40 24H34C34 18.48 29.52 14 24 14V8C32.84 8 40 15.16 40 24Z"
+                      fill="currentColor" opacity="0.15" />
+                    <path
+                      d="M14 24C14 29.52 18.48 34 24 34V40C15.16 40 8 32.84 8 24H14ZM40 24C40 32.84 32.84 40 24 40V34C29.52 34 34 29.52 34 24H40Z"
+                      fill="currentColor" opacity="0.08" />
+                  </svg>
+                </div>
+                <p>
+                  One of the most inspiring aspects of being in construction
+                  is seeing how our work contributes to the bigger picture. In
+                  isolation, each project team member’s contribution may be
+                  relatively small, but it’s far from insignificant. The final
+                  building is a result of the hard work of each and every team
+                  member.
+                </p>
+                <footer class="quote-footer">
+                  <div class="quote-author-line"></div>
+                  <h3>Adrienne Clarkson</h3>
+                  <span class="quote-role">Former Governor General of Canada</span>
+                </footer>
+              </blockquote>
+            </div>
+            <div class="quote-content" data-index="3 ">
+              <blockquote>
+                <div class="quote-icon">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14 24H8C8 15.16 15.16 8 24 8V14C18.48 14 14 18.48 14 24ZM40 24H34C34 18.48 29.52 14 24 14V8C32.84 8 40 15.16 40 24Z"
+                      fill="currentColor" opacity="0.15" />
+                    <path
+                      d="M14 24C14 29.52 18.48 34 24 34V40C15.16 40 8 32.84 8 24H14ZM40 24C40 32.84 32.84 40 24 40V34C29.52 34 34 29.52 34 24H40Z"
+                      fill="currentColor" opacity="0.08" />
+                  </svg>
+                </div>
+                <p>
+                  Plain and simple, this quote reminds us how important it is
+                  to choose the right building and design team. Choose firms
+                  that take the time to understand your vision for the project
+                  are committed to realizing that vision through their work
+                </p>
+                <footer class="quote-footer">
+                  <div class="quote-author-line"></div>
+                  <h3>Stephen Gardiner</h3>
+                  <span class="quote-role">Architect</span>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="quotes-nav">
+            <button class="quotes-arrow quotes-arrow-prev" aria-label="Previous quote">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+
+            <div class="quotes-dots">
+              <button class="quotes-dot active" data-index="0" aria-label="Go to qoute 1"></button>
+              <button class="quotes-dot" data-index="1" aria-label="Go to qoute 2"></button>
+              <button class="quotes-dot" data-index="2" aria-label="Go to qoute 3"></button>
+              <button class="quotes-dot" data-index="3" aria-label="Go to qoute 4"></button>
+            </div>
+
+            <button class="quotes-arrow quotes-arrow-next" aria-label=" Next quote">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+
+            </button>
+
+          </div>
+          <div class="quotes-counter">
+            <span class="quotes-counter-current">01</span>
+            <span class="quotes-counter-separator"></span>
+            <span class="quotes-counter-total">04</span>
+          </div>
+
+          <div class="quotes-progress">
+            <div class="quotes-progress-bar"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col chat-col" id="start-project">
+
+        <form class="footer-chat-form" id="footerChatForm">
+          <input type="text" id="chatName" placeholder="Your Name" required>
+          <input type="email" id="chatEmail" placeholder="Your Email" required>
+          <input type="tel" id="chatPhone" placeholder="Phone Number" required>
+          <textarea id="chatMessage" rows="3" placeholder="How can we help?" required></textarea>
+          <button type="submit" class="btn-chat-submit">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+      <!-- Column 1: Logo and Company Info -->
+      <div class="footer-col">
+        <div class="footer-logo">
+          <h3>White Eagles<span>Contractors</span></h3>
+        </div>
+        <p class="footer-about">
+          We are a leading construction company with 4 years of experience
+          in delivering high-quality projects on time and within budget.
+        </p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li>
+            <a href="#about"><i class="fa-solid fa-arrow-right"></i>About Us</a>
+          </li>
+          <li>
+            <a href="#services"><i class="fa-solid fa-arrow-right"></i>Services</a>
+          </li>
+          <li>
+            <a href="#projects"><i class="fa-solid fa-arrow-right"></i>Projects</a>
+          </li>
+          <li>
+            <a href="#contact"><i class="fa-solid fa-arrow-right"></i>Contact Us</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-arrow-right"></i>Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Our Services -->
+      <div class="footer-col">
+        <h3>Our Services</h3>
+        <ul>
+          <li>
+            <a href="#"><i class="fa-solid fa-arrow-right"></i>Commercial</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-arrow-right"></i>Residential</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-arrow-right"></i>Industrial</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-arrow-right"></i>Green Building</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-arrow-right"></i>Renovation</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact Info -->
+      <div class="footer-col" id="contact">
+        <h3>Contact Us</h3>
+        <ul class="contact-list">
+
+          <li>
+            <a href="https://wa.me/254758644293" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-phone"></i> +234 707087582</a>
+          </li>
+          <li>
+            <a href="mailto:whiteaglescontractors@gmail.com"><i
+                class="fa-solid fa-envelope"></i>whiteaglescontractors@gmail.com</a>
+          </li>
+          <li><i class="fa-solid fa-clock"></i> 24/7 Customer Support</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2026 White Eagles Contractors. All rights reserved.</p>
+    </div>
+  </footer>
+  <!--Login Model-->
+  <div class="model-backdrop" id="loginModel">
+    <div class="model">
+      <button class="btn-close" id="closeLogin" aria-label="close">
+        <i class="fa-solid fa-times"></i>
+      </button>
+      <div class="model-header">
+        <h2>SIGN IN</h2>
+      </div>
+      <div class="model-body">
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="your@email.com" />
+            <div class="error-msg">Please enter a valid email</div>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="loginPassword" placeholder="Enter your password" />
+              <button type="button" class="toggle-password">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <div class="error-msg">Password is required</div>
+          </div>
+
+          <button type="submit" class="btn-primary">Sign In</button>
+        </form>
+
+        <!-- <div class="model-divider">
+          <span class="divider-text">OR SIGN IN WITH</span>
+        </div> -->
+        <!-- 
+        <div class="social-sign">
+          <button class="social-btn google">
+            <i class="fa-brands fa-google"></i>Google
+          </button>
+          <button class="social-btn facebook">
+            <i class="fa-brands fa-facebook-f"></i>Facebook
+          </button>
+          <button class="social-btn apple">
+            <i class="fa-brands fa-apple"></i>Apple
+          </button>
+          <button class="social-btn linkedin">
+            <i class="fa-brands fa-linkedin-in"></i>LinkedIn
+          </button>
+        </div> -->
+
+        <div class="model-footer">
+          <p>
+            Don't have an account?
+            <a href="#" id="showRegister">Register here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Register Model-->
+  <div class="model-backdrop" id="registerModel">
+    <div class="model">
+      <button class="btn-close" id="close" aria-label="close">
+        <i class="fa-solid fa-times"></i>
+      </button>
+      <div class="model-header">
+        <h2>CREATE ACCOUNT</h2>
+      </div>
+      <div class="model-body">
+        <form action="" id="registerForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regFirstName">First Name</label>
+              <input type="text" id="regFirstName" placeholder="John" />
+              <div class="error-msg">First name required</div>
+            </div>
+            <div class="form-group">
+              <label for="regLastName">Last Name</label>
+              <input type="text" id="regLastName" placeholder="Doe" />
+              <div class="error-msg">Last name required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <input type="email" id="regEmail" placeholder="your@email.com" />
+            <div class="error-msg">Please enter a valid email</div>
+          </div>
+          <div class="form-group">
+            <label for="regPhone">Phone Number</label>
+            <input type="tel" id="regPhone" placeholder=" 0700-000-000" />
+            <div class="error-msg">Please enter a valid phone number</div>
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="regPassword" placeholder="********" />
+              <button type="button" class="toggle-password">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar" data-strength="1"></div>
+              <div class="strength-bar" data-strength="2"></div>
+              <div class="strength-bar" data-strength="3"></div>
+              <div class="strength-bar" data-strength="4"></div>
+            </div>
+            <div class="strength-text" id="strengthText">
+              <!-- show message here -->
+            </div>
+            <div class="error-msg">Please enter a password</div>
+          </div>
+
+          <div class="form-group">
+            <label for="regPasswordConfirm">Confirm Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="regPasswordConfirm" placeholder="********" />
+              <button type="button" class="toggle-password">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <div class="error-msg">Password don't match</div>
+          </div>
+
+          <button type="submit" class="btn-primary">Create Account</button>
+        </form>
+        <!--  <div class="model-divider">
+          <span class="divider-text">OR SIGN IN WITH</span>
+        </div>
+        <div class="social-sign">
+          <button class="social-btn google">
+            <i class="fa-brands fa-google"></i>Google
+          </button>
+          <button class="social-btn facebook">
+            <i class="fa-brands fa-facebook-f"></i>Facebook
+          </button>
+          <button class="social-btn apple">
+            <i class="fa-brands fa-apple"></i>Apple
+          </button>
+          <button class="social-btn linkedin">
+            <i class="fa-brands fa-linkedin-in"></i>LinkedIn
+          </button>
+        </div> -->
+        <div class="model-footer">
+          <p>
+            Already have an account? <a href="#" id="signInLink">Sign In</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="script.js"></script>
+  <script defer src="main.js"></script>
+</body>
+
+</html>
