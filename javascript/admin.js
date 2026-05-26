@@ -385,7 +385,8 @@ async function handleCreateService() {
                     service_number: parseInt(document.getElementById('ns_number').value),
                     title: title,
                     description: document.getElementById('ns_desc').value,
-                    icon_class: document.getElementById('ns_icon').value
+                    icon_class: document.getElementById('ns_icon').value,
+                    order_position: 1
                 })
             });
         }
@@ -401,10 +402,12 @@ async function handleCreateService() {
             document.getElementById('ns_title').value = '';
             document.getElementById('ns_desc').value = '';
         } else {
+            console.error("Backend Error:", data);
             toast(data.message || 'Failed to save', 'error');
         }
     } catch (err) {
-        toast('Failed to save service.', 'error');
+        console.error("Network/Code Error:", err);
+        toast(err.message || 'Failed to save service.', 'error');
     } finally {
         btn.disabled = false;
         btn.innerHTML = editingServiceId ? '<i class="fas fa-save"></i> Update Service' : '<i class="fas fa-plus"></i> Create Service';
