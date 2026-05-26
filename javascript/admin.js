@@ -385,7 +385,7 @@ async function handleCreateService() {
                     service_number: parseInt(document.getElementById('ns_number').value),
                     title: title,
                     description: document.getElementById('ns_desc').value,
-                    icon_class: document.getElementById('ns_icon').value,
+                    // icon_class: document.getElementById('ns_icon').value,
                     order_position: 1
                 })
             });
